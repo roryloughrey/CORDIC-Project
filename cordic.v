@@ -42,5 +42,4 @@ module cordic(in_angle, clock);
 			count <= count + 1;
 			$display("%b     %b", current_angle, sign);
 		end
-		
 endmodule
