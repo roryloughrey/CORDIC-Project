@@ -1,4 +1,4 @@
-module LUT(index, neg, return_angle);
+module LUT(index, return_angle);
 	input [4:0] index;
 	input neg;
 	
