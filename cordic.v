@@ -24,6 +24,8 @@ module cordic(in_angle, init, clock);
 		);
 
 	always @(init) begin 
+		$dumpfile("test.vcd");
+		$dumpvars(0,cordic);
 		current_angle <= 0;
 		count <= 0;
 		done <= 0;
