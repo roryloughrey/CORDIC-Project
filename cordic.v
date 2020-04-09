@@ -8,11 +8,11 @@ module cordic(in_angle, init, clock);
 	
 	wire signed [1:-16] lut_angle;
 	
-	reg [1:-16] cos;
-	reg [1:-16] sin;
+	reg signed [1:-16] cos;
+	reg signed [1:-16] sin;
 
-	reg [1:-16] cos_old;
-	reg [1:-16] sin_old;
+	reg signed [1:-16] cos_old;
+	reg signed [1:-16] sin_old;
 
 	reg done;
 	

@@ -19,7 +19,12 @@ module testbench();
 		#5 c = ~c;
 	
 	initial begin
-		in = 18'b000100110011001101;
+		in = 18'b010100110011001101;
+		#10 i = 0;
+			
+		#200 i = 1;
+		in = ~in;
+		
 		#10 i = 0;
 			
 		#200 $finish;
