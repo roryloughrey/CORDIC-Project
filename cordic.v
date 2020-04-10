@@ -1,12 +1,11 @@
-//module cordic(in_angle, current_angle, clock, cos, sin);
-module cordic(in_angle, init, clock);	
+module cordic(in_angle, init, clock, cos_out, sin_out);	
 	input signed [1:-16] in_angle;
 	input init,
 		  clock;
 
-	reg signed [1:-16] current_angle;
-	
 	wire signed [1:-16] lut_angle;
+
+	reg signed [1:-16] current_angle;
 	
 	reg signed [1:-16] cos;
 	reg signed [1:-16] sin;
@@ -14,9 +13,14 @@ module cordic(in_angle, init, clock);
 	reg signed [1:-16] cos_old;
 	reg signed [1:-16] sin_old;
 
+	reg [4:0] count;
+
 	reg done;
 	
-	reg [4:0] count;
+	localparam K = 18'b00_1001101101110101;
+	
+	output [1:-16] cos_out;
+	output [1:-16] sin_out;
 
 	LUT lut(
 		.index(count),
@@ -24,13 +28,13 @@ module cordic(in_angle, init, clock);
 		);
 
 	always @(init) begin 
-		$dumpfile("test.vcd");
-		$dumpvars(0,cordic);
+		//$dumpfile("test.vcd");
+		//$dumpvars(0,cordic);
 		current_angle <= 0;
 		count <= 0;
 		done <= 0;
 		
-		cos <= 18'b001001101101110101;
+		cos <= K;		
 		sin <= 0;
 	end
 
@@ -51,14 +55,17 @@ module cordic(in_angle, init, clock);
 				sin <= sin - (cos_old>>>count);
 			end
 				
-			//$display("angle: %b cos: %b	sin: %b", current_angle, cos, sin);
-			$display("angle: %d cos: %d sin: %d", current_angle, cos, sin);
+			$display("%d  cos: %f sin: %f", count, $itor(cos)/65536, $itor(sin)/65536);
 				
 			if(lut_angle == 1) begin
 				done = 1;
 				$display("done");
 			end
-				
+			
 			count <= count + 1;
 		end
+		
+		assign cos_out = cos;
+		assign sin_out = sin;
+		
 endmodule
