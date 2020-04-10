@@ -1,3 +1,11 @@
+/*
+* cordic.c
+* 
+* Authors: Brian Bulfin (16157516, Rory Loughrey (16178041), Micheal O'Connor (16188713)
+*
+* C program to implements “2.16” fixed-point CORDIC
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
