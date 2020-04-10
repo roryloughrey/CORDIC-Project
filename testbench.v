@@ -21,23 +21,45 @@ module testbench;
 >>>>>>> 32cc87d66527b0186311974dc4191b7136ad8c1d
 module testbench();
 	reg signed [1:-16] in;
+<<<<<<< HEAD
 	reg c;
+=======
+	wire signed [1:-16] cos;
+	wire signed [1:-16] sin;
+	reg c;
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 	reg i;
+	
+	localparam sf = 65536;
 
 	cordic cordic(
 		.in_angle(in),
 		.init(i),
-		.clock(c)
+		.clock(c),
+		.cos_out(cos),
+		.sin_out(sin)
 		);
+<<<<<<< HEAD
 
 	initial begin
 		in = 18'b0;
 		c = 0;
 		i = 1;
 	end
+=======
+
+	initial begin
+		$dumpfile("test.vcd");
+		$dumpvars(0, cordic);
+	
+		in = 18'b0;
+		c = 0;
+		i = 1;
+	end
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 
 	always
-		#5 c = ~c;
+		#10 c = ~c;
 	
 <<<<<<< HEAD
 	initial
@@ -51,6 +73,7 @@ module testbench();
 >>>>>>> 445c44286023847adfa328f5f28c1208f7772eb7
 =======
 	initial begin
+<<<<<<< HEAD
 		in = 18'b010100110011001101;
 		#10 i = 0;
 			
@@ -62,4 +85,20 @@ module testbench();
 		#200 $finish;
 	end
 >>>>>>> 32cc87d66527b0186311974dc4191b7136ad8c1d
+=======
+		in = 18'b01_0100110011001101;
+		$display("input angle: %f", $itor(in)/sf);
+		
+		#5 i = 0;
+			
+		#400; //$display("cos: %f sin: %f", $itor(cos)/sf, $itor(sin)/sf);
+		i = 1;
+		in = ~in;
+		
+		#20 i = 0;
+			
+		#400; //$display("cos: %f sin: %f", $itor(cos)/sf, $itor(sin)/sf);
+		$finish;
+	end
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 endmodule
