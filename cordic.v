@@ -1,4 +1,23 @@
+<<<<<<< HEAD
+/*
+* cordic.v
+* 
+* Authors: Brian Bulfin (16157516, Rory Loughrey (16178041), Micheal O'Connor (16188713)
+*
+* Verilog implementation of cordic.c 
+*/
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+module cordic;
+	
+=======
+=======
+>>>>>>> 32cc87d66527b0186311974dc4191b7136ad8c1d
+module cordic(in_angle, init, clock);	
+=======
 module cordic(in_angle, init, clock, cos_out, sin_out);	
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 	input signed [1:-16] in_angle;
 	input init,
 		  clock;
@@ -64,8 +83,17 @@ module cordic(in_angle, init, clock, cos_out, sin_out);
 			
 			count <= count + 1;
 		end
+<<<<<<< HEAD
+<<<<<<< HEAD
+		
+>>>>>>> 445c44286023847adfa328f5f28c1208f7772eb7
+endmodule
+=======
+=======
 		
 		assign cos_out = cos;
 		assign sin_out = sin;
 		
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 endmodule
+>>>>>>> 32cc87d66527b0186311974dc4191b7136ad8c1d

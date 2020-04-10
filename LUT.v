@@ -1,9 +1,39 @@
+/*
+* LUT.v
+* 
+* Authors: Brian Bulfin (16157516, Rory Loughrey (16178041), Micheal O'Connor (16188713)
+*
+* Verilog code for the look-up table for the arctan(2*-i)
+*/
+
 module LUT(index, return_angle);
 	input [4:0] index;
 	input neg;
 	
 	output reg [1:-16] return_angle;
 	
+<<<<<<< HEAD
+	// Look-up table arctan(2^0) - arctan(2^-16)
+	wire [1:-16] A_tab [0:17];
+	assign A_tab[0] = 18'b001100100100001111;
+	assign A_tab[1] = 18'b000111011010110010;
+	assign A_tab[2] = 18'b000011111010110111;
+	assign A_tab[3] = 18'b000001111111010101;
+	assign A_tab[4] = 18'b000000111111111010;
+	assign A_tab[5] = 18'b000000011111111110;
+	assign A_tab[6] = 18'b000000010000000000;
+	assign A_tab[7] = 18'b000000001000000000;
+	assign A_tab[8] = 18'b000000000100000000;
+	assign A_tab[9] = 18'b000000000010000000;
+	assign A_tab[10] = 18'b000000000001000000;
+	assign A_tab[11] = 18'b000000000000100000;
+	assign A_tab[12] = 18'b000000000000010000;
+	assign A_tab[13] = 18'b000000000000001000;
+	assign A_tab[14] = 18'b000000000000000100;
+	assign A_tab[15] = 18'b000000000000000010;
+	assign A_tab[16] = 18'b000000000000000001;
+	assign A_tab[17] = 18'b000000000000000000;
+=======
 	wire [1:-16] A_tab [0:16];
 	assign A_tab[0] = 18'b00_1100100100001111;
 	assign A_tab[1] = 18'b00_0111011010110010;
@@ -22,6 +52,7 @@ module LUT(index, return_angle);
 	assign A_tab[14] = 18'b00_0000000000000100;
 	assign A_tab[15] = 18'b00_0000000000000010;
 	assign A_tab[16] = 18'b00_0000000000000001;
+>>>>>>> b655e6c693d548f5f277353b41d3237996d65b19
 	
 		
 	always @(*)	
